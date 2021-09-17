@@ -12,11 +12,11 @@ import torch
 # You can use argparse.ArgumentParser() to instead
 
 EPOCHS = 1000000
-STYLE_IMG_PATH = './style/s.jpg'
+STYLE_IMG_PATH = './style/imslp_yellowed.jpg'
 # CONTENT_IMG_PATH = './content/code0.8.jpg'
-CONTENT_IMG_PATH = './content/boy.bmp'
-OUTPUT_DIR = './output/'
-IMAGE_SIZE = 512
+CONTENT_IMG_PATH = './content/lg-4610032-aug-lilyjazz--page-3.png'
+OUTPUT_DIR = './out/'
+IMAGE_SIZE = 1024
 BATCH_SIZE = 1
 LEARNING_RATE = 0.01
 CONTENT_WEIGHT = 1
@@ -35,7 +35,7 @@ style_transform = transforms.Compose([
 
 vgg = Vgg16(requires_grad=False).cuda()  # vgg16 model
 
-I = utils.scale_image(filename=STYLE_IMG_PATH, size=128, scale=512)
+I = utils.load_image(filename=STYLE_IMG_PATH, size=128, scale=512)
 
 I = np.array(I)
 plt.imshow(I)
